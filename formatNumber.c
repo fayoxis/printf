@@ -9,7 +9,6 @@
  * @width: Width specifier
  * @precision: Precision specifier
  * @size: Size specifier
- *
  * Return: Number of characters printed
  **/
 int printFormattedNumber(int isNegative, int index, char buffer[],
