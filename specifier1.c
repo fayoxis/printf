@@ -147,7 +147,7 @@ flags, width, precision, size));
 }
 
 /*
-int printFormatedNumber(int isNegative, int i, char buffer[],
+int printFormatNumber(int isNegative, int i, char buffer[],
 int flags, int width, int precision, int size)
 {
 int len;
