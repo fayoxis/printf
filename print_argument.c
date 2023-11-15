@@ -35,13 +35,10 @@ flags, width, precision, size));
 }
 i++;
 }
-if (format[*index] == '\0')
+while (format[*index] && format[*index] != '%')
 {
-output_buffer[0] = '%';
-output_buffer[1] = format[*index];
-return (2);
+output_buffer[unknown_len++] = format[(*index)++];
 }
-unknown_len += _putchar('%');
-unknown_len += _putchar(format[*index]);
-return (unknown_len);
+output_buffer[unknown_len] = '\0';
+return unknown_len;
 }
