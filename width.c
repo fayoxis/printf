@@ -27,7 +27,11 @@ int calculatePrintWidth(const char *formatString,
         printWidth = va_arg(argList, int);
     }
 
-    printf("Print width: %d\n", printWidth); // Debug print statement
+    _printf("Print width: %d\n", printWidth); 
 
     return printWidth;
 }
+
+
+
+
