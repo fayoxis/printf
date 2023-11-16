@@ -72,7 +72,7 @@ void print_buffer(char buffer[], int *buff_ind)
 int i = 0;
 while (i < *buff_ind)
 {
-_putchar(buffer[i]);
+write(1, &buffer[i], 1);
 i++;
 }
 *buff_ind = 0;
