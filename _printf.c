@@ -26,6 +26,7 @@ if (*format != '%')
 if (buff_ind == BUFF_SIZE)
 print_buffer(buffer, &buff_ind);
 buffer[buff_ind++] = *format;
+buffer[buff_ind] = '\0';
 print_the_chars++;
 }
 else
@@ -72,7 +73,7 @@ void print_buffer(char buffer[], int *buff_ind)
 int i = 0;
 while (i < *buff_ind)
 {
-write(1, &buffer[i], 1);
+write(1, &buffer[i], buff_ind);
 i++;
 }
 *buff_ind = 0;
