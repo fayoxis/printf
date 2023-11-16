@@ -75,6 +75,5 @@ while (i < *buff_ind)
 _putchar(buffer[i]);
 i++;
 }
-  _putchar('\n');
 *buff_ind = 0;
 }
