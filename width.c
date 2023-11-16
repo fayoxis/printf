@@ -14,7 +14,7 @@ int calculatePrintWidth(const char *formatString,
 {
 	int printWidth = 0;
 
-	while (isCharacterDigit(formatString[*currentIndex + 1]))
+	 while (isCharacterDigit(formatString[*currentIndex]))
 	{
 		printWidth *= 10;
 		printWidth += formatString[*currentIndex + 1] - '0';
