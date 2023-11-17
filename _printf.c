@@ -9,13 +9,15 @@ void print_buffer(char buffer[], int *buff_ind);
  */
 int _printf(const char *format, ...)
 {
-if (format == NULL)
-return -1;
+int currentIndex = 0, index = 0;
+int flags, width, precision, size, printed;
 va_list list;
-va_start(list, format);
 int print_the_chars = 0;
 int buff_ind = 0;
 char buffer[BUFF_SIZE];
+if (format == NULL)
+return -1;
+va_start(list, format);
 while (*format)
 {
 if (*format != '%')
@@ -29,11 +31,11 @@ else
 {
 print_buffer(buffer, &buff_ind);
 format++;
-int flags = calculate_flags(format, &k);
-int width = calculatePrintWidth(format, &currentIndex, list);
-int precision = calculatePrecision(format, &currentIndex, list);
-int size = determineSize(format, &currentIndex);
-int printed = print_argument(format, &index, list, buffer, flags, width, precision, size);
+flags = calculate_flags(format, &k);
+width = calculatePrintWidth(format, &currentIndex, list);
+precision = calculatePrecision(format, &currentIndex, list);
+size = determineSize(format, &currentIndex);
+printed = print_argument(format, &index, list, buffer, flags, width, precision, size);
 
 if (printed == -1)
 {
