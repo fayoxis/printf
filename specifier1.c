@@ -44,11 +44,8 @@ int flags, int width, int precision, int size)
 {
 int length = 0, i;
 char *str = va_arg(argList, char *);
-UNUSED(buffer);
-UNUSED(flags);
-UNUSED(width);
-UNUSED(precision);
 UNUSED(size);
+
 if (str == NULL)
 {
 str = "(null)";
@@ -63,21 +60,29 @@ if (width > length)
 {
 if (flags & F_MINUS)
 {
-write(1, str, length);
-for (i = width - length; i > 0; i--)
-write(1, " ", 1);
+for (i = 0; i < length; i++)
+buffer[i] = str[i];
+for (i = length; i < width; i++)
+buffer[i] = ' ';
 return (width);
 }
 else
 {
-for (i = width - length; i > 0; i--)
-write(1, " ", 1);
-write(1, str, length);
+for (i = 0; i < width - length; i++)
+buffer[i] = ' ';
+for (int j = 0; j < length; i++, j++)
+buffer[i] = str[j];
 return (width);
 }
 }
-return (write(1, str, length));
+else
+{
+for (i = 0; i < length; i++)
+buffer[i] = str[i];
+return (length);
 }
+}
+
 
 /**
  * printPercent - This function prints a percent sign.
