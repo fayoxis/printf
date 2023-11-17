@@ -8,7 +8,10 @@
 */
 int isCharacterPrintable(char ch)
 {
-    return (ch >= 32 && ch < 127);
+if (ch >= 32 && ch < 127)
+return (1);
+
+return (0);
 }
 /**
 * hexadecimal_code - Converts an ASCII code to its
@@ -21,21 +24,24 @@ int isCharacterPrintable(char ch)
 */
 int hexadecimal_code(char ascii_code, char buffer[], int index)
 {
-    const char hex_map[] = "0123456789ABCDEF";
-    
-    if (ascii_code < 0)
-        ascii_code *= -1;
+char hex_map[] = "0123456789ABCDEF";
+int i;
 
-    buffer[index++] = '\\';
-    buffer[index++] = 'x';
+/* The hexadecimal format code always consists of two digits */
+if (ascii_code < 0)
+ascii_code *= -1;
 
-    for (int i = 0; i < 2; i++)
-    {
-        buffer[index++] = hex_map[(ascii_code >> (4 - i * 4)) & 0xF];
-    }
+buffer[index++] = '\\';
+buffer[index++] = 'x';
 
-    return 3;
+for (i = 0; i < 2; i++)
+{
+buffer[index++] = hex_map[(ascii_code >> (4 - i * 4)) & 0xF];
 }
+
+return (3);
+}
+
 /**
 * isCharacterDigit - Checks whether a character is a digit
 * @ch: The character to be evaluated
