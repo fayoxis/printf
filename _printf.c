@@ -15,6 +15,7 @@ va_list list;
 int print_the_chars = 0;
 int buff_ind = 0;
 char buffer[BUFF_SIZE];
+char percent_format[];
   
 if (format == NULL)
 return (-1);
@@ -40,11 +41,10 @@ printed = print_argument(format, &index, list, buffer,
 flags, width, precision, size);
 if (printed == -1)
 {
-print_buffer(buffer, &buff_ind);
-buff_ind = 0;
-_putchar('%');
-_putchar(*format);
+percent_format[] = {'%', *format};
+print_buffer(percent_format, &buff_ind);
 print_the_chars += 2;
+buff_ind = 0; 
 }
 else
 {
