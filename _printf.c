@@ -25,7 +25,7 @@ if (*format != '%')
 {
 if (buff_ind == BUFF_SIZE)
 print_buffer(buffer, &buff_ind);
-buffer[buff_ind++] = *format;
+buffer[buff_ind++] = *format++;
 print_the_chars++;
 }
 else
