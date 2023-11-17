@@ -9,52 +9,49 @@ void print_buffer(char buffer[], int *buff_ind);
  */
 int _printf(const char *format, ...)
 {
-    if (format == NULL)
-        return -1;
+if (format == NULL)
+return -1;
+va_list list;
+va_start(list, format);
+int print_the_chars = 0;
+int buff_ind = 0;
+char buffer[BUFF_SIZE];
+while (*format)
+{
+if (*format != '%')
+{
+if (buff_ind == BUFF_SIZE)
+print_buffer(buffer, &buff_ind);
+buffer[buff_ind++] = *format++;
+print_the_chars++;
+}
+else
+{
+print_buffer(buffer, &buff_ind);
+format++;
+int flags = calculate_flags(format, &k);
+int width = calculatePrintWidth(format, &currentIndex, list);
+int precision = calculatePrecision(format, &currentIndex, list);
+int size = determineSize(format, &currentIndex);
+int printed = print_argument(format, &index, list, buffer, flags, width, precision, size);
 
-    va_list list;
-    va_start(list, format);
+if (printed == -1)
+{
+_putchar('%');
+_putchar(*format);
+print_the_chars += 2;
+}
+else
+{
+print_the_chars += printed;
+}
+}
+}
 
-    int print_the_chars = 0;
-    int buff_ind = 0;
-    char buffer[BUFF_SIZE];
+print_buffer(buffer, &buff_ind);
+va_end(list);
 
-    while (*format)
-    {
-        if (*format != '%')
-        {
-            if (buff_ind == BUFF_SIZE)
-                print_buffer(buffer, &buff_ind);
-            buffer[buff_ind++] = *format++;
-            print_the_chars++;
-        }
-        else
-        {
-            print_buffer(buffer, &buff_ind);
-            format++;
-            int flags = calculate_flags(format, &k);
-            int width = calculatePrintWidth(format, &currentIndex, list);
-            int precision = calculatePrecision(format, &currentIndex, list);
-            int size = determineSize(format, &currentIndex);
-            int printed = print_argument(format, &index, list, buffer, flags, width, precision, size);
-
-            if (printed == -1)
-            {
-                _putchar('%');
-                _putchar(*format);
-                print_the_chars += 2;
-            }
-            else
-            {
-                print_the_chars += printed;
-            }
-        }
-    }
-
-    print_buffer(buffer, &buff_ind);
-    va_end(list);
-
-    return print_the_chars;
+return print_the_chars;
 }
 
 
@@ -71,7 +68,7 @@ int _printf(const char *format, ...)
  */
 void print_buffer(char buffer[], int *buff_ind)
 {
-    write(1, buffer, *buff_ind);
-    *buff_ind = 0;
+write(1, buffer, *buff_ind);
+*buff_ind = 0;
 }
 
