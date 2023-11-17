@@ -70,7 +70,12 @@ return print_the_chars;
  */
 void print_buffer(char buffer[], int *buff_ind)
 {
-write(1, buffer, *buff_ind);
+int i = 0;
+while (i < *buff_ind)
+{
+write(1, &buffer[i], 1);
+i++;
+}
 *buff_ind = 0;
 }
 
