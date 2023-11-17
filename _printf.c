@@ -40,6 +40,8 @@ printed = print_argument(format, &index, list, buffer,
 flags, width, precision, size);
 if (printed == -1)
 {
+print_buffer(buffer, &buff_ind);
+buff_ind = 0;
 _putchar('%');
 _putchar(*format);
 print_the_chars += 2;
