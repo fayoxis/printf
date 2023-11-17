@@ -9,52 +9,54 @@ void print_buffer(char buffer[], int *buff_ind);
  */
 int _printf(const char *format, ...)
 {
-int k = 0, currentIndex = 0, index = 0;
-int flags, width, precision, size, printed;
-va_list list;
-int print_the_chars = 0;
-int buff_ind = 0;
-char buffer[BUFF_SIZE];
-  
-if (format == NULL)
-return (-1);
-va_start(list, format);
-while (*format)
-{
-if (*format != '%')
-{
-if (buff_ind == BUFF_SIZE)
-print_buffer(buffer, &buff_ind);
-buffer[buff_ind++] = *format;
-print_the_chars++;
+    if (format == NULL)
+        return -1;
+
+    va_list list;
+    va_start(list, format);
+
+    int print_the_chars = 0;
+    int buff_ind = 0;
+    char buffer[BUFF_SIZE];
+
+    while (*format)
+    {
+        if (*format != '%')
+        {
+            if (buff_ind == BUFF_SIZE)
+                print_buffer(buffer, &buff_ind);
+            buffer[buff_ind++] = *format++;
+            print_the_chars++;
+        }
+        else
+        {
+            print_buffer(buffer, &buff_ind);
+            format++;
+            int flags = calculate_flags(format, &k);
+            int width = calculatePrintWidth(format, &currentIndex, list);
+            int precision = calculatePrecision(format, &currentIndex, list);
+            int size = determineSize(format, &currentIndex);
+            int printed = print_argument(format, &index, list, buffer, flags, width, precision, size);
+
+            if (printed == -1)
+            {
+                _putchar('%');
+                _putchar(*format);
+                print_the_chars += 2;
+            }
+            else
+            {
+                print_the_chars += printed;
+            }
+        }
+    }
+
+    print_buffer(buffer, &buff_ind);
+    va_end(list);
+
+    return print_the_chars;
 }
-else
-{
-print_buffer(buffer, &buff_ind);
-format++;
-flags = calculate_flags(format, &k);
-width = calculatePrintWidth(format, &currentIndex, list);
-precision = calculatePrecision(format, &currentIndex, list);
-size = determineSize(format, &currentIndex);
-printed = print_argument(format, &index, list, buffer,
-flags, width, precision, size);
-if (printed == -1)
-{
-_putchar('%');
-_putchar(*format);
-print_the_chars += 2;
-}
-else
-{
-print_the_chars += printed;
-}
-}
-format++;
-}
-print_buffer(buffer, &buff_ind);
-va_end(list);
-return (print_the_chars);
-}
+
 
 /**
  * print_buffer - Prints the contents of the buffer
@@ -69,11 +71,7 @@ return (print_the_chars);
  */
 void print_buffer(char buffer[], int *buff_ind)
 {
-int i = 0;
-while (i < *buff_ind)
-{
-write(1, &buffer[i], 1);
-i++;
+    write(1, buffer, *buff_ind);
+    *buff_ind = 0;
 }
-*buff_ind = 0;
-}
+
