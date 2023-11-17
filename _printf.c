@@ -9,14 +9,15 @@ void print_buffer(char buffer[], int *buff_ind);
  */
 int _printf(const char *format, ...)
 {
-int currentIndex = 0, index = 0;
+int k = 0, currentIndex = 0, index = 0;
 int flags, width, precision, size, printed;
 va_list list;
 int print_the_chars = 0;
 int buff_ind = 0;
 char buffer[BUFF_SIZE];
+  
 if (format == NULL)
-return -1;
+return (-1);
 va_start(list, format);
 while (*format)
 {
@@ -24,7 +25,7 @@ if (*format != '%')
 {
 if (buff_ind == BUFF_SIZE)
 print_buffer(buffer, &buff_ind);
-buffer[buff_ind++] = *format++;
+buffer[buff_ind++] = *format;
 print_the_chars++;
 }
 else
@@ -35,8 +36,8 @@ flags = calculate_flags(format, &k);
 width = calculatePrintWidth(format, &currentIndex, list);
 precision = calculatePrecision(format, &currentIndex, list);
 size = determineSize(format, &currentIndex);
-printed = print_argument(format, &index, list, buffer, flags, width, precision, size);
-
+printed = print_argument(format, &index, list, buffer,
+flags, width, precision, size);
 if (printed == -1)
 {
 _putchar('%');
@@ -48,14 +49,12 @@ else
 print_the_chars += printed;
 }
 }
+format++;
 }
-
 print_buffer(buffer, &buff_ind);
 va_end(list);
-
-return print_the_chars;
+return (print_the_chars);
 }
-
 
 /**
  * print_buffer - Prints the contents of the buffer
@@ -78,4 +77,3 @@ i++;
 }
 *buff_ind = 0;
 }
-
