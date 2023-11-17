@@ -67,11 +67,13 @@ while (precision > num_length)
 buffer[--start_index] = '0', num_length++;
 if (extra_char != 0)
 num_length++;
-if (width > num_length) {
+if (width > num_length)
+{
 for (i = 0; i < padding_count; i++)
 padding_buffer[i] = padding_char;
 padding_buffer[i] = '\0';
-if (flags & F_MINUS && padding_char == ' ') {
+if (flags & F_MINUS && padding_char == ' ')
+{
 if (extra_char)
 buffer[--start_index] = extra_char, num_length++;
 printed_chars += write(1, &buffer[start_index], num_length);
@@ -79,7 +81,8 @@ printed_chars += write(1, padding_buffer, padding_count);
 }
 else
 {
-if (extra_char) {
+if (extra_char)
+{
 if (padding_char == '0')
 buffer[--padding_start] = extra_char;
 else
