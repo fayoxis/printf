@@ -11,24 +11,22 @@
 
 
 int calculatePrintWidth(const char *formatString,
-		int *currentIndex, va_list argList)
+int *currentIndex, va_list argList)
 {
-	int printWidth = 0;
+int printWidth = 0;
+while (isCharacterDigit(formatString[*currentIndex]))
+{
+printWidth *= 10;
+printWidth += formatString[*currentIndex + 1] - '0';
+(*currentIndex)++;
+}
 
-	 while (isCharacterDigit(formatString[*currentIndex]))
-	{
-		printWidth *= 10;
-		printWidth += formatString[*currentIndex + 1] - '0';
-		(*currentIndex)++;
-	}
-
-	if (formatString[*currentIndex + 1] == '*')
-	{
-		(*currentIndex)++;
-		printWidth = va_arg(argList, int);
-	}
-
-	return (printWidth);
+if (formatString[*currentIndex + 1] == '*')
+{
+(*currentIndex)++;
+printWidth = va_arg(argList, int);
+}
+return (printWidth);
 }
 
 
