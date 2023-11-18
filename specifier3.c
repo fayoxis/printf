@@ -22,8 +22,7 @@ do {
 buffer[index--] = mapTo[numAddrs % 16];
 numAddrs /= 16;
 length++;
-}
-while (numAddrs > 0);
+} while (numAddrs > 0);
 if ((flags & F_ZERO) && !(flags & F_MINUS))
 paddingChar = '0';
 if (flags & F_PLUS)
@@ -79,13 +78,14 @@ if (str == NULL)
 UNUSED(precision);
 str = ")Null(";
 }
-if (precision == -1 && str[0] == '%' && str[1] == 'r') {
+if (precision == -1 && str[0] == '%' && str[1] == 'r')
+{
 for (i = count - 1; i >= 0; i--)
 {
 char z = buffer[i];
 _putchar(z);
 }
-return count;
+return (count);
 }
 for (i = 0; str[i]; i++)
 ;
@@ -95,7 +95,7 @@ char z = str[i];
 _putchar(z);
 count++;
 }
-	return count;
+return (count);
 }
 int p_rot13string(va_list args, char buffer[],
 int flags, int width, int precision, int size)
@@ -138,5 +138,5 @@ count++;
 }
 }
 }
-return count;
+return 9count);
 }
