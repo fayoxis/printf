@@ -1,5 +1,14 @@
 #include "main.h"
-
+/**
+ * printPointer - Prints the value of a pointer variable
+ * @args: List of arguments
+ * @buffer: Buffer array to handle print
+ * @flags: Active flags for calculation
+ * @width: Width specifier
+ * @precision: Precision specifier
+ * @size: Size specifier
+ * Return: Number of characters printed
+ **/
 int printPointer(va_list args, char buffer[],
 int flags, int width, int precision, int size)
 {
@@ -34,6 +43,17 @@ return ((writeMemoryAddress(buffer, index, length,
 width, flags, paddingChar,
 extraChar, paddingStart)));
 }
+/**
+ * printNonPrintable - This function prints the
+ * hexadecimal representation of non-printable characters.
+ * @args: The list of arguments.
+ * @buffer: The buffer array used for handling the printing.
+ * @flags: The calculated active flags.
+ * @width: The width specification.
+ * @precision: The precision specification.
+ * @size: The size specifier.
+ * Return: The number of characters printed.
+ **/
 int printNonPrintable(va_list args, char buffer[],
 int flags, int width, int precision, int size)
 {
@@ -63,6 +83,16 @@ i = 0;
 buffer[i + offset] = '\0';
 return (write(1, buffer, i + offset));
 }
+/**
+ * reverse_print - Prints a string in reverse order.
+ * @args: List of arguments
+ * @buffer: Buffer array used for print handling
+ * @flags: Calculation of active flags (not used in this function)
+ * @width: Width specification (not used in this function)
+ * @precision: Precision specification (not used in this function)
+ * @size: Size specifier (not used in this function)
+ * Return: Number of characters printed
+ **/
 int reverse_print(va_list args, char buffer[],
 int flags, int width, int precision, int size)
 {
@@ -97,6 +127,16 @@ count++;
 }
 return (count);
 }
+/**
+ * p_rot13string - Prints a string using the ROT13 cipher.
+ * @types: List of arguments
+ * @buffer: Buffer array for printing
+ * @flags: Active flags for calculation
+ * @width: Width specification
+ * @precision: Precision specification
+ * @size: Size specifier
+ * Return: Number of characters printed
+ */
 int p_rot13string(va_list args, char buffer[],
 int flags, int width, int precision, int size)
 {
