@@ -37,7 +37,7 @@ return (printed_character(c, buffer, flags, width, precision, size));
  * flags, width and precision for formatting,
  * and size for size specification. The function
  * returns the number of characters printed.
- */
+ **/
 
 int printString(va_list argList, char buffer[],
 int flags, int width, int precision, int size)
@@ -83,7 +83,7 @@ return (write(1, str, length));
  * printPercent - This function prints a percent sign.
  * @types: List of arguments
  * @buffer: Buffer array to handle print
- * @flags: Calculates active flags 
+ * @flags: Calculates active flags
  * @width: Width specification
  * @precision: Precision specification
  * @size: Size specifier
