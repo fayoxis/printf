@@ -98,49 +98,45 @@ count++;
 	return count;
 }
 int p_rot13string(va_list args, char buffer[],
-                   int flags, int width, int precision, int size)
+int flags, int width, int precision, int size)
 {
-    char *str;
-    unsigned int i, j, k;
-    int count = 0;
-    char in[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-    char out[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
-
-    UNUSED(flags);
-    UNUSED(width);
-    UNUSED(precision);
-    UNUSED(size);
-    UNUSED(buffer);
-
-    str = va_arg(args, char *);
-
-    if (str == NULL)
-        str = "(NULL)";
-
-    for (i = 0; str[i]; i++)
-    {
-        for (j = 0; in[j]; j++)
-        {
-            if (in[j] == str[i])
-            {
-                char x = out[j];
-                for (k = 0; k < 1; k++)
-                {
-                    write(1, &x, 1); /* Write character to output */
-                    count++;
-                }
-                break;
-            }
-        }
-        if (!in[j])
-        {
-            char x = str[i];
-            for (k = 0; k < 1; k++)
-            {
-                write(1, &x, 1); /* Write character to output */
-                count++;
-            }
-        }
-    }
-    return count;
+\char *str;
+unsigned int i, j, k;
+int count = 0;
+char in[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+char out[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+UNUSED(flags);
+UNUSED(width);
+UNUSED(precision);
+UNUSED(size);
+UNUSED(buffer);
+str = va_arg(args, char *);
+if (str == NULL)
+str = "(NULL)";
+for (i = 0; str[i]; i++)
+{
+for (j = 0; in[j]; j++)
+{
+if (in[j] == str[i])
+{
+char x = out[j];
+for (k = 0; k < 1; k++)
+{
+write(1, &x, 1); /* Write character to output */
+count++;
+}
+break;
+}
+}
+if (!in[j])
+{
+char x = str[i];
+for (k = 0; k < 1; k++)
+{
+write(1, &x, 1); /* Write character to output */
+count++;
+}
+}
+}
+return count;
 }
