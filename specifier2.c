@@ -73,7 +73,7 @@ calcFlags, widthSpec, precisionSpec, sizeSpec));
  * @width: Width specification for formatting
  * @precision: Precision specification for formatting
  * @size: Size specifier for formatting
- * Returns: The count of characters printed
+ * Return: Number of characters printed.
  **/
 int print_Hexadecimal_num(va_list types, char buffer[],
 int flags, int width, int precision, int size)
