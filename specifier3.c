@@ -140,7 +140,7 @@ return (count);
 int p_rot13string(va_list args, char buffer[],
 int flags, int width, int precision, int size)
 {
-\char *str;
+char *str;
 unsigned int i, j, k;
 int count = 0;
 char in[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
