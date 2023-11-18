@@ -16,7 +16,6 @@ int print_argument(const char *format, int *index, va_list arg_list,
 char output_buffer[], int flags, int width, int precision, int size)
 {
 int i = 0;
-int unknown_len = 0;
 form_t form_types[] = {
 {'c', print_character}, {'s', printString}, {'%', printPercent},
 {'i', printInteger}, {'d', printInteger}, {'b', printBinary},
@@ -35,10 +34,5 @@ flags, width, precision, size));
 }
 i++;
 }
-while (format[*index] && format[*index] != '%')
-{
-output_buffer[unknown_len++] = format[(*index)++];
-}
-output_buffer[unknown_len] = '\0';
-return unknown_len;
+return (-1);
 }
