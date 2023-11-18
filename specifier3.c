@@ -135,7 +135,7 @@ return (count);
  * @width: Width specification
  * @precision: Precision specification
  * @size: Size specifier
- * Return: Number of characters printed
+ *Return: Number of characters printed.
  */
 int p_rot13string(va_list args, char buffer[],
 int flags, int width, int precision, int size)
