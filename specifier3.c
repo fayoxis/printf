@@ -129,14 +129,14 @@ return (count);
 }
 /**
  * p_rot13string - Prints a string using the ROT13 cipher.
- * @types: List of arguments
+ * @args: List of arguments (variadic)
  * @buffer: Buffer array for printing
  * @flags: Active flags for calculation
  * @width: Width specification
  * @precision: Precision specification
  * @size: Size specifier
- *Return: Number of characters printed.
- */
+ * Return: Number of characters printed.
+ **/
 int p_rot13string(va_list args, char buffer[],
 int flags, int width, int precision, int size)
 {
