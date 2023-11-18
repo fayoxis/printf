@@ -37,16 +37,17 @@ return (result);
 
 /**
  * print_formatted_number - Prints a formatted number using a buffer
- * @startIndex: Index at which the number starts in the buffer
+ * @start_index: Index at which the number starts in the buffer
  * @buffer: Buffer
  * @flags: Flags
  * @width: Width
  * @precision: Precision specifier
- * @numLength: Number length
- * @paddingChar: Padding character
- * @extraChar: Extra character
+ * @num_length: Number length
+ * @padding_char: Padding character
+ * @extra_char: Extra character
  *
- * Returns: Number of characters printed.
+ * Prints a formatted number using the provided buffer and parameters.
+ * Returns the number of characters printed.
  */
 int print_formatted_number(int start_index, char buffer[], int flags,
 int width, int precision, int num_length,
