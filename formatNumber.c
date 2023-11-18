@@ -45,9 +45,8 @@ return (result);
  * @num_length: Number length
  * @padding_char: Padding character
  * @extra_char: Extra character
- *
  * Prints a formatted number using the provided buffer and parameters.
- * Returns the number of characters printed.
+ * Returns: The number of characters printed.
  */
 int print_formatted_number(int start_index, char buffer[], int flags,
 int width, int precision, int num_length,
