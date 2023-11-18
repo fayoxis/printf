@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * calculatePrintWidth - Calculates the width value for printing
  * @formatString: The formatted string in which the arguments will be printed.
@@ -7,6 +8,7 @@
  *
  * Return: The calculated print width.
  */
+
 
 int calculatePrintWidth(const char *formatString,
 		int *currentIndex, va_list argList)
