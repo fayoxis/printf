@@ -36,7 +36,7 @@ return (printed_character(c, buffer, flags, width, precision, size));
  * buffer array for printing, flags to calculate active
  * flags, width and precision for formatting,
  * and size for size specification. The function
- * returns the number of characters printed.
+ * Return: Number of characters printed.
  **/
 
 int printString(va_list argList, char buffer[],
