@@ -12,7 +12,7 @@ int calculate_flags(const char *format, int *k)
 int flags = 0;
 while (format[*k] == '-')
 {
-flags |= 1; 
+flags |= 1;
 (*k)++;
 }
 return (flags);
