@@ -8,13 +8,13 @@
  * @width: Width specification
  * @precision: Precision specification
  * @size: Size specifier
- * This function prints a single character. It takes a variable arguments list, 
- * a buffer array for print handling, flag calculations, width and precision 
- * specifications, and a size specifier. The character to be printed is retrieved 
- * from the variable arguments list. The function returns the number of characters 
- * printed.
+ * This function prints a single character. It takes
+ * a variable arguments list, a buffer array for print handling,
+ * flag calculations, width and precision specifications, and a size specifier.
+ * he character to be printed is retrieved  from the variable arguments list.
+ *The function returns the number of characters printed.
  * Return: Number of characters printed
- */
+ **/
 
 int print_character(va_list args, char buffer[],
 int flags, int width, int precision, int size)
@@ -138,58 +138,9 @@ else
 do {
 buffer[i--] = (num % 10) + '0';
 num /= 10;
-}
-while (num > 0);
+} while (num > 0);
 }
 i++;
 return (printFormattedNumber(isNegative, i, buffer,
 flags, width, precision, size));
 }
-
-/*
-int printFormatNumber(int isNegative, int i, char buffer[],
-int flags, int width, int precision, int size)
-{
-int len;
-int j;
-int printed_chars = 0;
-if (isNegative)
-{
-buffer[i--] = '-';
-}
-len = BUFF_SIZE - 2 - i;
-if (precision > len - isNegative)
-{
-for (j = len - isNegative; j < precision; j++)
-{
-buffer[i--] = '0';
-}
-}
-
-if (!(flags & F_MINUS))
-{
-while (width > len)
-{
-buffer[i--] = (flags & F_ZERO) ? '0' : ' ';
-width--;
-}
-}
-for (j = i + 1; j < BUFF_SIZE - 1; j++)
-{
-write(1, &buffer[j], 1);
-printed_chars++;
-}
-if (flags & F_MINUS)
-{
-while (width > len)
-{
-write(1, " ", 1);
-width--;
-printed_chars++;
-}
-}
-UNUSED(size);
-return (printed_chars);
-}
-
-*/
