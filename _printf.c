@@ -16,7 +16,6 @@ int print_the_chars = 0;
 int buff_ind = 0;
 char buffer[BUFF_SIZE];
 char percent_format[2];
-  
 if (format == NULL)
 return (-1);
 va_start(list, format);
@@ -47,7 +46,7 @@ percent_format[0] = '%';
 percent_format[1] = *format;
 print_buffer(percent_format, &buff_ind);
 print_the_chars += 2;
-buff_ind = 0; 
+buff_ind = 0;
 }
 else
 {
