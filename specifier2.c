@@ -12,7 +12,7 @@
  * @precision: The precision specification.
  * @sizeSpecifier: The size specifier.
  * Return: The number of characters printed.
- */
+ **/
 int printUnsignedNumber(va_list argList, char outputBuffer[],
 int flags, int width, int precision, int sizeSpecifier)
 {
@@ -74,7 +74,7 @@ calcFlags, widthSpec, precisionSpec, sizeSpec));
  * @precision: Precision specification for formatting
  * @size: Size specifier for formatting
  * Returns: The count of characters printed
- */
+ **/
 int print_Hexadecimal_num(va_list types, char buffer[],
 int flags, int width, int precision, int size)
 {
@@ -93,7 +93,7 @@ buffer, flags, 'x', width, precision, size));
  * @size: Size specifier.
  *
  * Return: The number of characters printed.
- */
+ **/
 
 int print_hexadecimal_upper(va_list types, char buffer[],
 int flags, int width, int precision, int size)
@@ -114,7 +114,7 @@ flags, 'X', width, precision, size));
  * @precision: Precision specification
  * @size: Size specifier
  * Return: Number of characters printed
- */
+ **/
 int printed_Hexadecimal(va_list args, char mapping[], char outputBuffer[],
 int flags, char flagChar, int width, int precision, int size)
 {
